@@ -31,6 +31,16 @@ class Conta:
         for valores in self.transacoes:
             print(valores[0], valores[1])
 
+class ContaEspecial(Conta):
+    def __init__(self, clientes, numero, saldo=0, limite=0):
+        Conta.__init__(self, clientes, numero, saldo)
+        self.limite = limite
+    
+    def saque(self, valor):
+        if self.saldo + self.limite >= valor:
+            self.saldo -= valor
+            self.transacoes.append(['SAQUE', valor])
+
 if __name__ == '__main__':
     p1 = Conta('ga', 1, 300)
     print(p1.deposito(400))
