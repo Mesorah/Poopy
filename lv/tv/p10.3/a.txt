@@ -1,0 +1,2 @@
+cliente marca o nome e telefone apenas
+conta resumo(pega o numero e o saldo), saque, deposito, extrato(pega todas as operaçoes)

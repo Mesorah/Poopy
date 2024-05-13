@@ -17,7 +17,7 @@ class Televisao:
         else:
             self.canal = self.cmin
 
-tv = Televisao()
+tv = Televisao(min=3, max=4)
 tv.muda_canal_para_cima()
 tv.muda_canal_para_cima()
 
