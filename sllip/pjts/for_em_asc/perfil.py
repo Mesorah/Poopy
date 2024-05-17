@@ -78,4 +78,5 @@ class Perfil:
         print(f'''
 Nome: {self.nome}
 Sobrenome: {self.sobrenome}
+Dinheiro: {self.dinheiro}
 ''')

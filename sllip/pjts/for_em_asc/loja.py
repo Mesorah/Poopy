@@ -24,6 +24,11 @@ class Loja:
         escolha = input('Qual item você irá comprar? ')
         if not self.verifica_numero(escolha):
             print('ue')
+
+        elif int(escolha) not in [1]:
+            print('opção inexistente')
+            
+            return
         
         else:
             self.compra_produto(int(escolha))
