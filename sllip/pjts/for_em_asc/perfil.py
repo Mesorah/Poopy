@@ -38,7 +38,7 @@ class Perfil:
 
     """ Altera o nome do personagem para um novo """
     def altera_nome(self):
-        novo_nome = input('Qual seu novo nome?')
+        novo_nome = input('Qual seu novo nome? ')
 
         if self.verifica_string(novo_nome):
             self.nome = novo_nome
@@ -51,7 +51,7 @@ class Perfil:
 
     """ Altera o sobrenome do personagem para um novo """
     def altera_sobrenome(self):
-        novo_sobrenome = input('Qual seu novo sobrenome?')
+        novo_sobrenome = input('Qual seu novo sobrenome? ')
 
         if self.verifica_string(novo_sobrenome):
             self.sobrenome = novo_sobrenome
