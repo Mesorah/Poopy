@@ -55,8 +55,9 @@ class EscolhaTrabalho:
     
 
 class Trabalho:
-    def __init__(self, perfil):
+    def __init__(self, perfil, escolha_trabalho):
         self.perfil = perfil
+        self.escolha_trabalho = escolha_trabalho
         self.energia = 100
 
     def exemplo_trabalho(self, msg):
@@ -75,17 +76,12 @@ class Trabalho:
         print(f'+ R${salario_trabalho_atual}')
 
         self.perfil.dinheiro += salario_trabalho_atual
-        print(self.perfil.dinheiro)
 
-        self.perfil.dinheiro += salario_trabalho_atual
-        print(self.perfil.dinheiro)
+        experiencia_adicional = int(round(salario_trabalho_atual / 220, 0))
+        self.escolha_trabalho.experiencia += experiencia_adicional
 
+        print(f'+ Exp{self.escolha_trabalho.experiencia}')
 
-        # self.experiencia(self.salario_trabalho)
-        # print(f'+ {self.salario_trabalho / 220} EXP')
-
-        # self.menos_energia(self.salario_trabalho) 
-
-    def comecar_trabalho(self):
-        pass
+    def limpador_privado(self):
+        self.exemplo_trabalho('Limpando a privada...')
     

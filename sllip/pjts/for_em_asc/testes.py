@@ -1,6 +1,7 @@
 from perfil import *
-import bdd
 from trabalho import *
+from loja import *
+import bdd
 
 def acoes():
     pass
@@ -8,14 +9,13 @@ def acoes():
 
 def get_personagem():
     personagem = Perfil()
-
     personagem.nome_personagem()
     personagem.exibir_perfil()
 
     trabalho = EscolhaTrabalho()
     trabalho.escolha_trabalho()
 
-    tra = Trabalho(personagem)
-    tra.exemplo_trabalho('js')
+    tra = Trabalho(personagem, trabalho)
+    tra.limpador_privado()
 
     return personagem
