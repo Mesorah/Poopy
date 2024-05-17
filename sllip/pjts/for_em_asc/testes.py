@@ -8,9 +8,12 @@ def acoes():
 
 def get_personagem():
     personagem = Perfil()
+
     personagem.nome_personagem()
     personagem.exibir_perfil()
+    
     trabalho = Trabalho()
-    trabalho.trabalhin(personagem.nome, personagem.sobrenome)
+    trabalho.escolha_trabalho(personagem.experiencia)
+
 
     return personagem
