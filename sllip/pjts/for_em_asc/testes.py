@@ -7,15 +7,15 @@ def acoes():
 
 
 def get_personagem():
-    # personagem = Perfil()
+    personagem = Perfil()
 
-    # personagem.nome_personagem()
-    # personagem.exibir_perfil()
+    personagem.nome_personagem()
+    personagem.exibir_perfil()
 
-    # trabalho = EscolhaTrabalho()
-    # trabalho.escolha_trabalho()
+    trabalho = EscolhaTrabalho()
+    trabalho.escolha_trabalho()
 
-    tra = Trabalho()
-    Trabalho.exemplo_trabalho('opa', 'j')
+    tra = Trabalho(personagem)
+    tra.exemplo_trabalho('js')
 
     return personagem

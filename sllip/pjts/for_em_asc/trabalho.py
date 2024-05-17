@@ -3,6 +3,7 @@ from perfil import Perfil
 class EscolhaTrabalho:
     def __init__(self):
         self.experiencia = 0
+        self.num_trabalho_atual = 0
         self.trabalho = [
             {'id_trabalho': 1, 'nome_trabalho': 'Limpador de privada', 'salario': 1000, 'experiencia': 0},
 
@@ -20,6 +21,7 @@ class EscolhaTrabalho:
         while True:
             escolha = input('Qual trabalho você irá escolher? ')
             if self.verifica_numero(escolha) and int(escolha) in [1] and self.verifica_experiencia(trabalhos[int(escolha) - 1]['experiencia']):
+                self.num_trabalho_atual = trabalhos[int(escolha) - 1]
                 print('ok')
                 break
 
@@ -53,7 +55,8 @@ class EscolhaTrabalho:
     
 
 class Trabalho:
-    def __init__(self):
+    def __init__(self, perfil):
+        self.perfil = perfil
         self.energia = 100
 
     def exemplo_trabalho(self, msg):
@@ -65,9 +68,18 @@ class Trabalho:
         sleep(0.4)
         print('Pegando o salário com o chefe...')
         sleep(0.4)
-        print(EscolhaTrabalho().trabalho)
-        # print(f'+ R${self.salario_trabalho}')
-        # self.dinheiro += EscolhaTrabalho().escolha_trabalho.trabalho
+
+        info_trabalhos = EscolhaTrabalho().trabalho
+        salario_trabalho_atual = info_trabalhos[EscolhaTrabalho().num_trabalho_atual]['salario']
+
+        print(f'+ R${salario_trabalho_atual}')
+
+        self.perfil.dinheiro += salario_trabalho_atual
+        print(self.perfil.dinheiro)
+
+        self.perfil.dinheiro += salario_trabalho_atual
+        print(self.perfil.dinheiro)
+
 
         # self.experiencia(self.salario_trabalho)
         # print(f'+ {self.salario_trabalho / 220} EXP')
