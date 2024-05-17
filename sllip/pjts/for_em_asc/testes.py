@@ -20,7 +20,11 @@ def get_personagem():
     tra.descancar()
     tra.limpador_privado()
 
-    lj = Loja(personagem)
+    print(tra.maximo_energia)
+
+    lj = Loja(personagem, tra)
     lj.escolha_produto()
+
+    print(tra.maximo_energia)
 
     return personagem
