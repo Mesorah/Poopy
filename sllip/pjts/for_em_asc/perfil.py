@@ -34,29 +34,33 @@ class Perfil:
                 print('ue')
 
     """ Alterações de nome """
-    @property
+
+
+    """ Altera o nome do personagem para um novo """
     def altera_nome(self):
-        return self.nome
-    
-    @altera_nome.setter
-    def altera_nome(self, novo_nome):
+        novo_nome = input('Qual seu novo nome?')
+
         if self.verifica_string(novo_nome):
             self.nome = novo_nome
+
+
             print('Nome alterado com sucesso!')
         else:
             print('O nome deve conter apenas letras.')
 
-    @property
+
+    """ Altera o sobrenome do personagem para um novo """
     def altera_sobrenome(self):
-        return self.sobrenome
-    
-    @altera_sobrenome.setter
-    def altera_sobrenome(self, novo_sobrenome):
+        novo_sobrenome = input('Qual seu novo sobrenome?')
+
         if self.verifica_string(novo_sobrenome):
             self.sobrenome = novo_sobrenome
-            print('Sobrenome alterado com sucesso!')
+
+
+            print('sobrenome alterado com sucesso!')
         else:
             print('O sobrenome deve conter apenas letras.')
+
 
     """
         Verifica se a variável é uma string
