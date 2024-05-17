@@ -62,12 +62,16 @@ class Trabalho:
         self.energia = 100
         self.maximo_energia = 100
 
+
+    """ Verifica se a energia é maior ou igual a 51 """
     def verifica_energia(self):
         if self.energia >= 51:
             return True
         
         return False
     
+
+    """ Serve para recuperar a energia no máximo """
     def descancar(self):
         print('descansando...')
         sleep(0.4)
@@ -77,9 +81,13 @@ class Trabalho:
         print('energia recuperada!')
         sleep(0.1)
 
+
+    """ Remover a energia """
     def remove_energia_trabalho(self):
         self.energia -= 50
 
+
+    """ Um exemplo para seguir em todos os trabalhos, removendo energia, adicionando salario e experiência """
     def exemplo_trabalho(self, msg):
         if not self.verifica_energia():
             print('energia insuficiente')
@@ -109,6 +117,7 @@ class Trabalho:
 
             print(f'- 50 de energia, Total de energia: {self.energia}')
 
+    """ Emprego para substituar a mensagem no exemplo_trabalho """
     def limpador_privado(self):
         self.exemplo_trabalho('Limpando a privada...')
     
