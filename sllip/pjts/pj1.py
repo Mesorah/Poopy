@@ -37,7 +37,7 @@ class Banco:
         attrs = f'; Nome: {self.nome!r}, Sobrenome: {self.sobrenome!r}'
         return f'{class_name}{attrs}'
 
-    def atualiza_dados(self):
+    def atualiza_dados(self): # Já que quando mudados o nome no cadastro, ele não atualiza, colocar na função um meio que atualizaria
         pass
 
     def ver_saldo(self):

@@ -13,6 +13,7 @@ class Caneta:
 
 
 cn = Caneta('azul')
+
 cn.cor_caneta = 'rosa'
 
 print(cn.cor_caneta)
