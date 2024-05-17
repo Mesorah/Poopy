@@ -101,6 +101,12 @@ class Trabalho:
             print('Pegando o salário com o chefe...')
             sleep(0.4)
 
+            ###############################################
+
+            ### ver melhor, talver colocar como self.escolhatrabalho.... ###
+
+            ###############################################
+
             info_trabalhos = EscolhaTrabalho().trabalho
             salario_trabalho_atual = info_trabalhos[EscolhaTrabalho().num_trabalho_atual]['salario']
 
@@ -116,6 +122,7 @@ class Trabalho:
             self.remove_energia_trabalho()
 
             print(f'- 50 de energia, Total de energia: {self.energia}')
+
 
     """ Emprego para substituar a mensagem no exemplo_trabalho """
     def limpador_privado(self):

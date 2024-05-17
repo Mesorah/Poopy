@@ -54,7 +54,7 @@ class Loja:
             return False
             
 
-    
+    """ Efetua/entrega a compra ao usuário """
     def efetuar_compra(self, produto):
         if produto['numero_produto'] == 1:
             self.trabalho.maximo_energia += 15
