@@ -73,10 +73,3 @@ class Perfil:
             
         return True
     
-
-    def exibir_perfil(self):
-        print(f'''
-Nome: {self.nome}
-Sobrenome: {self.sobrenome}
-Dinheiro: {self.dinheiro}
-''')

@@ -18,7 +18,7 @@ class IniciarJogo:
 
             acao = input('O que fazer? ')
 
-            if not self.verifica_numero(acao) or int(acao) not in [1, 2, 3, 4, 5]:
+            if not self.verifica_numero(acao) or int(acao) not in [1, 2, 3, 4, 5, 6]:
                 print('Opção inválida!')
             
             else:
@@ -32,7 +32,19 @@ class IniciarJogo:
     4- Loja
     5- Exibir perfil
     ''') 
+        
+    def exibir_perfil(self):
+        info_trabalhos = EscolhaTrabalho().trabalho
+            
 
+        print(f'''
+Nome: {self.personagem.nome}
+Sobrenome: {self.personagem.sobrenome}
+Dinheiro: {self.personagem.dinheiro}
+Trabalho atual: {info_trabalhos[EscolhaTrabalho().num_trabalho_atual]['nome_trabalho']}
+Experiencia: {self.trabalho.experiencia}
+Energia {self.tra.energia}
+''')
     def escolha_opcoes(self, opcao):
         if opcao == 1:
             self.trabalho.escolha_trabalho()
@@ -47,10 +59,22 @@ class IniciarJogo:
             self.loja.escolha_produto()
 
         elif opcao == 5:
-            self.personagem.exibir_perfil()
+            self.exibir_perfil()
+
+        elif opcao == 6:
+            personagem = self.get_personagem
+
+            return
+        
+        else:
+            print('opção inexistente')
 
     def verifica_numero(self, numero):
         return numero.isnumeric()
+    
+    # def get_personagem(self):
+
+    #     return personagem
 
 jogo = IniciarJogo()
 jogo.iniciar_jogo()

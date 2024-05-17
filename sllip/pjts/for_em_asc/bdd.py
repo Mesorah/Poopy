@@ -20,4 +20,4 @@ with sqlite3.connect(ARQUIVO_COMPLETO) as connection:
         cursor.execute('CREATE TABLE IF NOT EXISTS Perfis(id INTEGER PRIMARY KEY, nome TEXT, sobrenome TEXT)')
         
         """ Insere os nomes e os sobrenomes """
-        cursor.execute(f'INSERT INTO Perfis(nome, sobrenome) Values(?, ?)', (personagem.nome, personagem.sobrenome))
+        cursor.execute(f'INSERT INTO Perfis(nome, sobrenome, ) Values(?, ?)', (personagem.nome, personagem.sobrenome))
