@@ -2,7 +2,6 @@ class Perfil:
     def __init__(self):
         self.nome = None
         self.sobrenome = None
-        self.experiencia = 10
 
 
     """
