@@ -4,10 +4,12 @@ from pathlib import Path
 import perfil
 import testes
 
+"""  Arquivos onde vai ser localizado o banco de dados """
 ARQUIVO_BRUTO = Path(__file__).parent
 NOME_BANCO_DE_DADOS = 'perfis.db'
 ARQUIVO_COMPLETO = ARQUIVO_BRUTO / NOME_BANCO_DE_DADOS
 
+""" Pega os atributos do personagem """
 personagem = testes.get_personagem()
 
 with sqlite3.connect(ARQUIVO_COMPLETO) as connection:
