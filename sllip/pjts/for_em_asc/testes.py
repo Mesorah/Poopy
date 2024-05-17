@@ -17,6 +17,10 @@ def get_personagem():
 
     tra = Trabalho(personagem, trabalho)
     tra.limpador_privado()
+    tra.descancar()
     tra.limpador_privado()
+
+    lj = Loja(personagem)
+    lj.escolha_produto()
 
     return personagem
