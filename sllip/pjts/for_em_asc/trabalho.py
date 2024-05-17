@@ -26,13 +26,14 @@ class EscolhaTrabalho:
     """ Chamas as outras funções, e tem a lista de dicionário dos trabalhos """
     def escolha_trabalho(self):
         trabalho = [
-            {'id_trabalho': 1, 'nome_trabalho': 'Limpador de privada', 'experiencia': 0},
+            {'id_trabalho': 1, 'nome_trabalho': 'Limpador de privada', 'salario': 1000, 'experiencia': 0},
 
         ]
 
         self.exibir_trabalho(trabalho)
 
         self.escolher_trabalho(trabalho)
+
 
     """ Verifica a expericia que o jogador tem no perfil.py """
     def verifica_experiencia(self, experiencia):
@@ -65,7 +66,7 @@ class Trabalho:
         print('Pegando o salário com o chefe...')
         sleep(3)
         print(f'+ R${self.salario_trabalho}')
-        self.dinheiro += self.salario_trabalho
+        self.dinheiro += EscolhaTrabalho().escolha_trabalho.trabalho
 
         self.experiencia(self.salario_trabalho)
         print(f'+ {self.salario_trabalho / 220} EXP')
@@ -74,3 +75,4 @@ class Trabalho:
 
     def comecar_trabalho(self):
         pass
+    
