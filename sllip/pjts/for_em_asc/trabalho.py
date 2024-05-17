@@ -1,4 +1,5 @@
 from perfil import Perfil
+from time import sleep
 
 class EscolhaTrabalho:
     def __init__(self):
@@ -59,28 +60,54 @@ class Trabalho:
         self.perfil = perfil
         self.escolha_trabalho = escolha_trabalho
         self.energia = 100
+        self.maximo_energia = 100
+
+    def verifica_energia(self):
+        if self.energia >= 51:
+            return True
+        
+        return False
+    
+    def descancar(self):
+        print('descansando...')
+        sleep(0.4)
+
+        self.energia = self.maximo_energia
+
+        print('energia recuperada!')
+        sleep(0.1)
+
+    def remove_energia_trabalho(self):
+        self.energia -= 50
 
     def exemplo_trabalho(self, msg):
-        from time import sleep
+        if not self.verifica_energia():
+            print('energia insuficiente')
+            return
 
-        print(f'{msg}')
-        sleep(0.4)
-        print('Almoçando...')
-        sleep(0.4)
-        print('Pegando o salário com o chefe...')
-        sleep(0.4)
+        else:
+            print(f'{msg}')
+            sleep(0.4)
+            print('Almoçando...')
+            sleep(0.4)
+            print('Pegando o salário com o chefe...')
+            sleep(0.4)
 
-        info_trabalhos = EscolhaTrabalho().trabalho
-        salario_trabalho_atual = info_trabalhos[EscolhaTrabalho().num_trabalho_atual]['salario']
+            info_trabalhos = EscolhaTrabalho().trabalho
+            salario_trabalho_atual = info_trabalhos[EscolhaTrabalho().num_trabalho_atual]['salario']
 
-        print(f'+ R${salario_trabalho_atual}')
+            print(f'+ R${salario_trabalho_atual}')
 
-        self.perfil.dinheiro += salario_trabalho_atual
+            self.perfil.dinheiro += salario_trabalho_atual
 
-        experiencia_adicional = int(round(salario_trabalho_atual / 220, 0))
-        self.escolha_trabalho.experiencia += experiencia_adicional
+            experiencia_adicional = int(round(salario_trabalho_atual / 220, 0))
+            self.escolha_trabalho.experiencia += experiencia_adicional
 
-        print(f'+ Exp{self.escolha_trabalho.experiencia}')
+            print(f'+ Exp{self.escolha_trabalho.experiencia}')
+
+            self.remove_energia_trabalho()
+
+            print(f'- 50 de energia, Total de energia: {self.energia}')
 
     def limpador_privado(self):
         self.exemplo_trabalho('Limpando a privada...')

@@ -17,5 +17,6 @@ def get_personagem():
 
     tra = Trabalho(personagem, trabalho)
     tra.limpador_privado()
+    tra.limpador_privado()
 
     return personagem
