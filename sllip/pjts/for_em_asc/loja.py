@@ -1,4 +1,5 @@
 from perfil import *
+from time import sleep
 
 class Loja:
     def __init__(self, perfil, trabalho):
@@ -61,8 +62,12 @@ class Loja:
 
     """ Efetua/entrega a compra ao usuário """
     def efetuar_compra(self, produto):
+        print('Compra efetuada com sucesso!')
+        sleep(0.3)
+
         if produto['numero_produto'] == 1:
             self.trabalho.maximo_energia += 15
+            print('+15 de energia!')
 
 
     """ Verifica se o que ele mandou é um número """

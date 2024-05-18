@@ -104,15 +104,10 @@ class Trabalho:
             print('Pegando o salário com o chefe...')
             sleep(0.4)
 
-            ###############################################
-
-            ### ver melhor, talver colocar como self.escolhatrabalho.... ###
-
-            ###############################################
+            print()
 
             info_trabalhos = self.escolha_trabalho.trabalho
             salario_trabalho_atual = info_trabalhos[self.escolha_trabalho.num_trabalho_atual]['salario']
-            print(salario_trabalho_atual, '##############################################################')
 
             print(f'+ R${salario_trabalho_atual}')
 

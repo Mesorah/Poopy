@@ -2,10 +2,10 @@ from perfil import *
 from trabalho import *
 from loja import *
 import bdd
-
 import sqlite3
 from contextlib import closing
 from pathlib import Path
+import os
 
 class IniciarJogo:
     """ Inicias as outras classes, para não perder os dados """
@@ -14,6 +14,13 @@ class IniciarJogo:
         self.trabalho = EscolhaTrabalho()
         self.tra = Trabalho(self.personagem, self.trabalho)
         self.loja = Loja(self.personagem, self.tra)
+    
+
+    """ Limpa o terminal da pessoa """
+    @staticmethod
+    def limpa_terminal():
+        os.system('cls' if os.name == 'nt' else 'clear')
+
 
     """ Loop para começar o jogo e chamadas de funções """
     def iniciar_jogo(self):
@@ -22,23 +29,31 @@ class IniciarJogo:
             print('Você tem algum perfil salvo?[s/n]')
 
             resp_perfil_salvo = input(': ').lower()
+            self.limpa_terminal()
 
             if resp_perfil_salvo[0] == 's':
                 nome = input("Digite o nome do personagem: ")
+                self.limpa_terminal()
+
                 sobrenome = input("Digite o sobrenome do personagem: ")
+                self.limpa_terminal()
 
                 if self.carregar_perfil(nome, sobrenome):
-                    print('opa')
-                    print('achei')
+                    print('Perfil encontrado')
+                    sleep(0.4)
+                    self.limpa_terminal()
                     break
 
                 else:
-                    print('eta')
-                    print('perfil não encontrado')
+                    print('Perfil não encontrado')
+                    sleep(0.8)
+                    self.limpa_terminal()
 
             elif resp_perfil_salvo[0] == 'n':
                 self.personagem.nome_personagem()
+                self.limpa_terminal()
                 self.personagem.sobrenome_personagem()
+                self.limpa_terminal()
                 break
 
 
@@ -46,9 +61,12 @@ class IniciarJogo:
             self.exibe_opcoes()
 
             acao = input('O que fazer? ')
+            self.limpa_terminal()
 
             if not self.verifica_numero(acao) or int(acao) not in [1, 2, 3, 4, 5, 6]:
                 print('Opção inválida!')
+                sleep(0.5)
+                self.limpa_terminal()
             
             else:
                 self.escolha_opcoes(int(acao))
@@ -116,6 +134,8 @@ Energia {self.tra.energia}
 
         elif opcao == 3:
             self.tra.descancar()
+            sleep(0.4)
+            self.limpa_terminal()
 
         elif opcao == 4:
             self.loja.escolha_produto()
