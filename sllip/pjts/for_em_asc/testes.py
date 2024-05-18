@@ -17,10 +17,10 @@ class IniciarJogo:
 
     """ Loop para começar o jogo e chamadas de funções """
     def iniciar_jogo(self):
-        self.personagem.nome_personagem()
-        self.personagem.sobrenome_personagem()
-
-        if self.carregar_perfil():
+        nome = input("Digite o nome do personagem: ")
+        sobrenome = input("Digite o sobrenome do personagem: ")
+        
+        if self.carregar_perfil(nome, sobrenome):
             print('opa')
         else:
             print('eta')
@@ -78,9 +78,9 @@ Energia {self.tra.energia}
                 if resultado:
                     self.personagem.nome, self.personagem.sobrenome, self.personagem.dinheiro, self.trabalho.trabalho_atual, self.trabalho.experiencia, self.tra.energia = resultado
                     #self.nome, self.sobrenome, self.dinheiro, self.trabalho_atual, self.experiencia, self.energia = resultado
-                    print('opa')
+                    print('opaaaa')
                     return True
-        print('eta')
+        print('etaaaa')
         return False
         
 
