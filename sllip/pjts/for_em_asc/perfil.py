@@ -17,11 +17,11 @@ class Perfil:
             self.nome = input('Nome: ')
 
             if self.verifica_string(self.nome):
-                print('ok')
+                print('sucesso')
                 break
             
             else:
-                print('ue')
+                print('ERROR')
 
 
     """
@@ -32,11 +32,11 @@ class Perfil:
             self.sobrenome = input('Sobrenome: ')
 
             if self.verifica_string(self.sobrenome):
-                print('ok')
+                print('sucesso')
                 break
             
             else:
-                print('ue')
+                print('ERROR')
 
     """ Alterações de nome """
 

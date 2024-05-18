@@ -63,7 +63,7 @@ class IniciarJogo:
             acao = input('O que fazer? ')
             self.limpa_terminal()
 
-            if not self.verifica_numero(acao) or int(acao) not in [1, 2, 3, 4, 5, 6]:
+            if not self.verifica_numero(acao) or int(acao) not in [1, 2, 3, 4, 5, 6, 7]:
                 print('Opção inválida!')
                 sleep(0.5)
                 self.limpa_terminal()
@@ -71,7 +71,7 @@ class IniciarJogo:
             else:
                 self.escolha_opcoes(int(acao))
 
-                if int(acao) == 6:
+                if int(acao) == 7:
                     break
 
 
@@ -83,7 +83,8 @@ class IniciarJogo:
     3- Dormir
     4- Loja
     5- Exibir perfil
-    6- Sair e salvar
+    6- Salvar
+    7- Sair e salvar
     ''') 
     
 
@@ -115,10 +116,9 @@ Energia {self.tra.energia}
 
                 if resultado:
                     self.personagem.nome, self.personagem.sobrenome, self.personagem.dinheiro, self.trabalho.trabalho_atual, self.trabalho.experiencia, self.tra.energia = resultado
-                    #self.nome, self.sobrenome, self.dinheiro, self.trabalho_atual, self.experiencia, self.energia = resultado
-                    print('opaaaa')
+                    print('Sucesso')
                     return True
-        print('etaaaa')
+        print('ERROR')
         return False
         
 
@@ -128,8 +128,6 @@ Energia {self.tra.energia}
             self.trabalho.escolha_trabalho()
 
         elif opcao == 2:
-            # self.tra.self.trabalho.trabalho[self.trabalho.num_trabalho_atual]['nome_trabalho']()
-            # print(self.trabalho.trabalho[self.trabalho.num_trabalho_atual]['nome_trabalho'])
             self.tra.faxineiro()
 
         elif opcao == 3:
@@ -142,13 +140,11 @@ Energia {self.tra.energia}
 
         elif opcao == 5:
             self.exibir_perfil()
-        #######################
-        elif opcao == 6:       
+        elif opcao == 6 or opcao == 7:       
             bdd.enviar_dados_para_banco_de_dados(self.personagem.nome, self.personagem.sobrenome,
                                               self.personagem.dinheiro, self.trabalho.trabalho[self.trabalho.num_trabalho_atual]['nome_trabalho'],
                                                 self.trabalho.experiencia, self.tra.energia)
             
-            return
             
         
         else:

@@ -22,15 +22,13 @@ class EscolhaTrabalho:
     def escolher_trabalho(self, trabalhos):
         while True:
             escolha = input('Qual trabalho você irá escolher? ')
-            # print(trabalhos[int(escolha) - 1], '############$$$$$$$$$$$$$$$$$$@')
             if self.verifica_numero(escolha) and int(escolha) in [1, 2] and self.verifica_experiencia(trabalhos[int(escolha) - 1]['experiencia']):
-                # self.num_trabalho_atual = trabalhos[int(escolha) - 1] ######
                 self.num_trabalho_atual = int(escolha) - 1 
-                print('ok')
+                print('sucesso')
                 break
 
             else:
-                print('ue')
+                print('ERROR')
 
     """ Chamas as outras funções, e tem a lista de dicionário dos trabalhos """
     def escolha_trabalho(self):
