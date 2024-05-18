@@ -1,6 +1,7 @@
 from perfil import *
 from trabalho import *
 from loja import *
+import bdd
 
 class IniciarJogo:
     def __init__(self):
@@ -62,7 +63,17 @@ Energia {self.tra.energia}
             self.exibir_perfil()
 
         elif opcao == 6:
-            personagem = self.get_personagem
+            # Pegue os atributos do personagem
+            tipo_perfis = TipoPerfis()
+            nome = tipo_perfis.nome
+            sobrenome = tipo_perfis.sobrenome
+            dinheiro = tipo_perfis.dinheiro
+            trabalho_atual = tipo_perfis.trabalho_atual
+            experiencia = tipo_perfis.experiencia
+            energia = tipo_perfis.energia
+
+            # Envie os dados para o banco de dados
+            bdd.enviar_dados_para_banco_de_dados(nome, sobrenome, dinheiro, trabalho_atual, experiencia, energia)
 
             return
         
@@ -72,9 +83,25 @@ Energia {self.tra.energia}
     def verifica_numero(self, numero):
         return numero.isnumeric()
     
-    # def get_personagem(self):
 
-    #     return personagem
+
+class TipoPerfis:
+    def __init__(self):
+        self.personagem = Perfil()
+        self.trabalho = EscolhaTrabalho()
+        self.tra = Trabalho(self.personagem, self.trabalho)
+        self.loja = Loja(self.personagem, self.tra)
+
+
+        info_trabalhos = EscolhaTrabalho().trabalho
+
+        nome = {self.personagem.nome}
+        sobrenome = {self.personagem.sobrenome}
+        dinheiro = {self.personagem.dinheiro}
+        trabalho_atual = {info_trabalhos[EscolhaTrabalho().num_trabalho_atual]['nome_trabalho']}
+        experiencia: {self.trabalho.experiencia}
+        energia = {self.tra.energia}
+
 
 jogo = IniciarJogo()
 jogo.iniciar_jogo()
