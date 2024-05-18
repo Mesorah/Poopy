@@ -14,7 +14,7 @@ class IniciarJogo:
         self.trabalho = EscolhaTrabalho()
         self.tra = Trabalho(self.personagem, self.trabalho)
         self.loja = Loja(self.personagem, self.tra)
-    
+
 
     """ Limpa o terminal da pessoa """
     @staticmethod
@@ -102,22 +102,53 @@ Energia {self.tra.energia}
 
     """ Carrega o perfil do banco de dados """
     def carregar_perfil(self, nome, sobrenome):
+        print('AAAAAAAAAAAAAAAAAAAAAKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD')
+
         ARQUIVO_BRUTO = Path(__file__).parent
         NOME_BANCO_DE_DADOS = 'perfis.db'
         ARQUIVO_COMPLETO = ARQUIVO_BRUTO / NOME_BANCO_DE_DADOS
 
         with sqlite3.connect(ARQUIVO_COMPLETO) as connection:
             with closing(connection.cursor()) as cursor:
+                
+                print(ARQUIVO_COMPLETO, 'JFFFKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK')
+
+                print('ESTOU SENDO EXECUTADO DDDDDDDDDDDDDDDDDDDDDDDDDDDD')
+
+                cursor.execute('''
+                CREATE TABLE IF NOT EXISTS Perfis(
+                    id INTEGER PRIMARY KEY,
+                    nome TEXT,
+                    sobrenome TEXT,
+                    dinheiro REAL,
+                    trabalho_atual TEXT,
+                    experiencia INTEGER,
+                    energia INTEGER
+                )
+            ''')
+                
+                connection.commit()
+                
+                print('PASSEI POR OUTRO EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE')
+
                 cursor.execute('''
                     SELECT nome, sobrenome, dinheiro, trabalho_atual, experiencia, energia FROM Perfis
                     WHERE nome = ? AND sobrenome = ?
                 ''', (nome, sobrenome))
                 resultado = cursor.fetchone()
 
+                print(cursor.execute('''
+                    SELECT nome, sobrenome, dinheiro, trabalho_atual, experiencia, energia FROM Perfis
+                    WHERE nome = ? AND sobrenome = ?
+                ''', (nome, sobrenome)))
+
+                print('PASSEI PELO ULTIMO FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF')
+
                 if resultado:
                     self.personagem.nome, self.personagem.sobrenome, self.personagem.dinheiro, self.trabalho.trabalho_atual, self.trabalho.experiencia, self.tra.energia = resultado
                     print('Sucesso')
                     return True
+                
         print('ERROR')
         return False
         
@@ -159,4 +190,3 @@ Energia {self.tra.energia}
 
 jogo = IniciarJogo()
 jogo.iniciar_jogo()
-
