@@ -1,8 +1,6 @@
 import sqlite3
 from contextlib import closing
 from pathlib import Path
-import testes
-from testes import TipoPerfis
 
 """  Arquivos onde vai ser localizado o banco de dados """
 ARQUIVO_BRUTO = Path(__file__).parent

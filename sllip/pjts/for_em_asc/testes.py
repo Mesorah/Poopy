@@ -64,19 +64,7 @@ Energia {self.tra.energia}
 
         elif opcao == 6:
             # Pegue os atributos do personagem
-            tipo_perfis = TipoPerfis()
-            nome = tipo_perfis.nome
-            sobrenome = tipo_perfis.sobrenome
-            dinheiro = tipo_perfis.dinheiro
-            trabalho_atual = tipo_perfis.trabalho_atual
-            experiencia = tipo_perfis.experiencia
-            energia = tipo_perfis.energia
-
-            # Envie os dados para o banco de dados
-            print('fui enviado')
-            bdd.enviar_dados_para_banco_de_dados()
-
-            return
+            TipoPerfis().enviar()
         
         else:
             print('opção inexistente')
@@ -86,22 +74,31 @@ Energia {self.tra.energia}
     
 
 
-class TipoPerfis:
+class TipoPerfis(IniciarJogo):
     def __init__(self):
-        self.personagem = Perfil()
-        self.trabalho = EscolhaTrabalho()
-        self.tra = Trabalho(self.personagem, self.trabalho)
-        self.loja = Loja(self.personagem, self.tra)
+        super().__init__()
+        print(self.nome, self.sobrenome, self.dinheiro, self.trabalho_atual, self.experiencia, self.energia)
 
-        info_trabalhos = EscolhaTrabalho().trabalho
 
-        self.nome = self.personagem.nome
-        self.sobrenome = self.personagem.sobrenome
-        self.dinheiro = self.personagem.dinheiro
-        self.trabalho_atual = info_trabalhos[self.trabalho.num_trabalho_atual]['nome_trabalho']
-        self.experiencia = self.trabalho.experiencia
-        self.energia = self.tra.energia
+        # self.personagem = Perfil()
+        # self.trabalho = EscolhaTrabalho()
+        # self.tra = Trabalho(self.personagem, self.trabalho)
+        # self.loja = Loja(self.personagem, self.tra)
 
+        # info_trabalhos = EscolhaTrabalho().trabalho
+
+        # self.nome = self.personagem.nome
+        # self.sobrenome = self.personagem.sobrenome
+        # self.dinheiro = self.personagem.dinheiro
+        # self.trabalho_atual = info_trabalhos[self.trabalho.num_trabalho_atual]['nome_trabalho']
+        # self.experiencia = self.trabalho.experiencia
+        # self.energia = self.tra.energia
+
+    # Envie os dados para o banco de dados
+    # def enviar(self):
+    #     print('fui enviado')
+    #     bdd.enviar_dados_para_banco_de_dados(self.nome, self.sobrenome, self.dinheiro, self.trabalho_atual, self.experiencia, self.energia)
+        #  print(self.nome, self.sobrenome, self.dinheiro, self.trabalho_atual, self.experiencia, self.energia)
 
 jogo = IniciarJogo()
 jogo.iniciar_jogo()
