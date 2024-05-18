@@ -4,17 +4,43 @@ from loja import *
 import bdd
 
 class IniciarJogo:
+    """ Inicias as outras classes, para não perder os dados """
     def __init__(self):
         self.personagem = Perfil()
         self.trabalho = EscolhaTrabalho()
         self.tra = Trabalho(self.personagem, self.trabalho)
         self.loja = Loja(self.personagem, self.tra)
 
-
     """ Loop para começar o jogo e chamadas de funções """
     def iniciar_jogo(self):
-        self.personagem.nome_personagem()
-        self.personagem.sobrenome_personagem()
+        nome = input('Digite seu nome: ')
+        sobrenome = input('Digite seu sobrenome: ')
+
+        if not self.personagem.carregar_perfil(nome, sobrenome):
+            print('Perfil não encontrado. Criando um novo perfil.')
+            self.personagem.nome = nome
+            self.personagem.sobrenome = sobrenome
+
+            """
+                perfil.py
+
+                , self.trabalho_atual, self.experiencia, self.energia
+
+
+
+                testes.py
+
+                else:
+            # Carrega o trabalho atual, experiência e energia
+            self.trabalho.experiencia = self.personagem.experiencia
+            self.tra.energia = self.personagem.energia
+            # Encontrar o trabalho pelo nome
+            for idx, trabalho in enumerate(self.trabalho.trabalho):
+                if trabalho['nome_trabalho'] == self.personagem.trabalho_atual:
+                    self.trabalho.num_trabalho_atual = idx
+                    break
+            """
+
 
         while True:
             self.exibe_opcoes()
@@ -81,6 +107,7 @@ Energia {self.tra.energia}
         
         else:
             print('opção inexistente')
+
 
     """ Verifica se é um numero """
     def verifica_numero(self, numero):
