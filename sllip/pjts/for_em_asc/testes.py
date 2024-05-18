@@ -6,6 +6,7 @@ import sqlite3
 from contextlib import closing
 from pathlib import Path
 import os
+import sys
 
 class IniciarJogo:
     """ Inicias as outras classes, para não perder os dados """
@@ -106,7 +107,14 @@ Energia {self.tra.energia}
 
         ARQUIVO_BRUTO = Path(__file__).parent
         NOME_BANCO_DE_DADOS = 'perfis.db'
-        ARQUIVO_COMPLETO = ARQUIVO_BRUTO / NOME_BANCO_DE_DADOS
+        # ARQUIVO_COMPLETO = os.path.join(os.path.dirname(__file__), 'perfis.db')
+
+        if getattr(sys, 'frozen', False):  # Se estiver executando como um executável empacotado
+            base_dir = os.path.dirname(sys.executable)
+        else:  # Se estiver executando como um script Python
+            base_dir = os.path.dirname(__file__)
+
+        ARQUIVO_COMPLETO  = os.path.join(base_dir, 'perfis.db')
 
         with sqlite3.connect(ARQUIVO_COMPLETO) as connection:
             with closing(connection.cursor()) as cursor:
