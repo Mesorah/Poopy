@@ -73,7 +73,8 @@ Energia {self.tra.energia}
             energia = tipo_perfis.energia
 
             # Envie os dados para o banco de dados
-            bdd.enviar_dados_para_banco_de_dados(nome, sobrenome, dinheiro, trabalho_atual, experiencia, energia)
+            print('fui enviado')
+            bdd.enviar_dados_para_banco_de_dados()
 
             return
         
@@ -92,15 +93,14 @@ class TipoPerfis:
         self.tra = Trabalho(self.personagem, self.trabalho)
         self.loja = Loja(self.personagem, self.tra)
 
-
         info_trabalhos = EscolhaTrabalho().trabalho
 
-        nome = {self.personagem.nome}
-        sobrenome = {self.personagem.sobrenome}
-        dinheiro = {self.personagem.dinheiro}
-        trabalho_atual = {info_trabalhos[EscolhaTrabalho().num_trabalho_atual]['nome_trabalho']}
-        experiencia: {self.trabalho.experiencia}
-        energia = {self.tra.energia}
+        self.nome = self.personagem.nome
+        self.sobrenome = self.personagem.sobrenome
+        self.dinheiro = self.personagem.dinheiro
+        self.trabalho_atual = info_trabalhos[self.trabalho.num_trabalho_atual]['nome_trabalho']
+        self.experiencia = self.trabalho.experiencia
+        self.energia = self.tra.energia
 
 
 jogo = IniciarJogo()
