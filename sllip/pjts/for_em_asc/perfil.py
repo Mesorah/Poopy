@@ -40,26 +40,6 @@ class Perfil:
 
     """ Alterações de nome """
 
-    """ Carrega o perfil do banco de dados """
-    def carregar_perfil(self, nome, sobrenome):
-        ARQUIVO_BRUTO = Path(__file__).parent
-        NOME_BANCO_DE_DADOS = 'perfis.db'
-        ARQUIVO_COMPLETO = ARQUIVO_BRUTO / NOME_BANCO_DE_DADOS
-
-        with sqlite3.connect(ARQUIVO_COMPLETO) as connection:
-            with closing(connection.cursor()) as cursor:
-                cursor.execute('''
-                    SELECT nome, sobrenome, dinheiro FROM Perfis
-                    WHERE nome = ? AND sobrenome = ?
-                ''', (nome, sobrenome))
-                resultado = cursor.fetchone()
-
-                if resultado:
-                    self.nome, self.sobrenome, self.dinheiro = resultado
-                    return True
-
-        return False
-
 
     """ Altera o nome do personagem para um novo """
     def altera_nome(self):

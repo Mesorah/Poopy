@@ -3,6 +3,10 @@ from trabalho import *
 from loja import *
 import bdd
 
+import sqlite3
+from contextlib import closing
+from pathlib import Path
+
 class IniciarJogo:
     """ Inicias as outras classes, para não perder os dados """
     def __init__(self):
@@ -13,34 +17,13 @@ class IniciarJogo:
 
     """ Loop para começar o jogo e chamadas de funções """
     def iniciar_jogo(self):
-        nome = input('Digite seu nome: ')
-        sobrenome = input('Digite seu sobrenome: ')
+        self.personagem.nome_personagem()
+        self.personagem.sobrenome_personagem()
 
-        if not self.personagem.carregar_perfil(nome, sobrenome):
-            print('Perfil não encontrado. Criando um novo perfil.')
-            self.personagem.nome = nome
-            self.personagem.sobrenome = sobrenome
-
-            """
-                perfil.py
-
-                , self.trabalho_atual, self.experiencia, self.energia
-
-
-
-                testes.py
-
-                else:
-            # Carrega o trabalho atual, experiência e energia
-            self.trabalho.experiencia = self.personagem.experiencia
-            self.tra.energia = self.personagem.energia
-            # Encontrar o trabalho pelo nome
-            for idx, trabalho in enumerate(self.trabalho.trabalho):
-                if trabalho['nome_trabalho'] == self.personagem.trabalho_atual:
-                    self.trabalho.num_trabalho_atual = idx
-                    break
-            """
-
+        if self.carregar_perfil():
+            print('opa')
+        else:
+            print('eta')
 
         while True:
             self.exibe_opcoes()
@@ -76,6 +59,29 @@ Trabalho atual: {self.trabalho.trabalho[self.trabalho.num_trabalho_atual]['nome_
 Experiencia: {self.trabalho.experiencia}
 Energia {self.tra.energia}
 ''')
+        
+
+    """ Carrega o perfil do banco de dados """
+    def carregar_perfil(self, nome, sobrenome):
+        ARQUIVO_BRUTO = Path(__file__).parent
+        NOME_BANCO_DE_DADOS = 'perfis.db'
+        ARQUIVO_COMPLETO = ARQUIVO_BRUTO / NOME_BANCO_DE_DADOS
+
+        with sqlite3.connect(ARQUIVO_COMPLETO) as connection:
+            with closing(connection.cursor()) as cursor:
+                cursor.execute('''
+                    SELECT nome, sobrenome, dinheiro, trabalho_atual, experiencia, energia FROM Perfis
+                    WHERE nome = ? AND sobrenome = ?
+                ''', (nome, sobrenome))
+                resultado = cursor.fetchone()
+
+                if resultado:
+                    self.personagem.nome, self.personagem.sobrenome, self.personagem.dinheiro, self.trabalho.trabalho_atual, self.trabalho.experiencia, self.tra.energia = resultado
+                    #self.nome, self.sobrenome, self.dinheiro, self.trabalho_atual, self.experiencia, self.energia = resultado
+                    print('opa')
+                    return True
+        print('eta')
+        return False
         
 
     """ Função onde executa outras funções com base da escolha do jogador """
@@ -117,3 +123,4 @@ Energia {self.tra.energia}
 
 jogo = IniciarJogo()
 jogo.iniciar_jogo()
+
