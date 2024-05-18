@@ -49,6 +49,6 @@ def enviar_dados_para_banco_de_dados(nome, sobrenome, dinheiro, trabalho_atual, 
                     VALUES (?, ?, ?, ?, ?, ?)
                 ''', (nome, sobrenome, dinheiro, trabalho_atual, experiencia, energia))
 
-            cursor.execute('DELETE FROM perfis')
+            # cursor.execute('DELETE FROM perfis')
             connection.commit()
 
