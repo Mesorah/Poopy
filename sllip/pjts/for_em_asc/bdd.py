@@ -7,9 +7,10 @@ import sys
 # Caminho do arquivo onde será localizado o banco de dados
 ARQUIVO_BRUTO = Path(__file__).parent
 NOME_BANCO_DE_DADOS = 'perfis.db'
-# ARQUIVO_COMPLETO = os.path.join(os.path.dirname(__file__), 'perfis.db')
+
 if getattr(sys, 'frozen', False):  # Se estiver executando como um executável empacotado
     base_dir = os.path.dirname(sys.executable)
+    
 else:  # Se estiver executando como um script Python
     base_dir = os.path.dirname(__file__)
 

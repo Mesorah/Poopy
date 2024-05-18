@@ -107,7 +107,6 @@ Energia {self.tra.energia}
 
         ARQUIVO_BRUTO = Path(__file__).parent
         NOME_BANCO_DE_DADOS = 'perfis.db'
-        # ARQUIVO_COMPLETO = os.path.join(os.path.dirname(__file__), 'perfis.db')
 
         if getattr(sys, 'frozen', False):  # Se estiver executando como um executável empacotado
             base_dir = os.path.dirname(sys.executable)
@@ -118,10 +117,6 @@ Energia {self.tra.energia}
 
         with sqlite3.connect(ARQUIVO_COMPLETO) as connection:
             with closing(connection.cursor()) as cursor:
-                
-                print(ARQUIVO_COMPLETO, 'JFFFKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK')
-
-                print('ESTOU SENDO EXECUTADO DDDDDDDDDDDDDDDDDDDDDDDDDDDD')
 
                 cursor.execute('''
                 CREATE TABLE IF NOT EXISTS Perfis(
@@ -137,7 +132,6 @@ Energia {self.tra.energia}
                 
                 connection.commit()
                 
-                print('PASSEI POR OUTRO EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE')
 
                 cursor.execute('''
                     SELECT nome, sobrenome, dinheiro, trabalho_atual, experiencia, energia FROM Perfis
@@ -149,8 +143,6 @@ Energia {self.tra.energia}
                     SELECT nome, sobrenome, dinheiro, trabalho_atual, experiencia, energia FROM Perfis
                     WHERE nome = ? AND sobrenome = ?
                 ''', (nome, sobrenome)))
-
-                print('PASSEI PELO ULTIMO FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF')
 
                 if resultado:
                     self.personagem.nome, self.personagem.sobrenome, self.personagem.dinheiro, self.trabalho.trabalho_atual, self.trabalho.experiencia, self.tra.energia = resultado
