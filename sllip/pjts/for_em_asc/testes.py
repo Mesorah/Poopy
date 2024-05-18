@@ -17,13 +17,30 @@ class IniciarJogo:
 
     """ Loop para começar o jogo e chamadas de funções """
     def iniciar_jogo(self):
-        nome = input("Digite o nome do personagem: ")
-        sobrenome = input("Digite o sobrenome do personagem: ")
-        
-        if self.carregar_perfil(nome, sobrenome):
-            print('opa')
-        else:
-            print('eta')
+
+        while True:
+            print('Você tem algum perfil salvo?[s/n]')
+
+            resp_perfil_salvo = input(': ').lower()
+
+            if resp_perfil_salvo[0] == 's':
+                nome = input("Digite o nome do personagem: ")
+                sobrenome = input("Digite o sobrenome do personagem: ")
+
+                if self.carregar_perfil(nome, sobrenome):
+                    print('opa')
+                    print('achei')
+                    break
+
+                else:
+                    print('eta')
+                    print('perfil não encontrado')
+
+            elif resp_perfil_salvo[0] == 'n':
+                self.personagem.nome_personagem()
+                self.personagem.sobrenome_personagem()
+                break
+
 
         while True:
             self.exibe_opcoes()
@@ -35,6 +52,9 @@ class IniciarJogo:
             
             else:
                 self.escolha_opcoes(int(acao))
+
+                if int(acao) == 6:
+                    break
 
 
     """ Printa no terminal as opções que o jogador tem """
@@ -102,7 +122,7 @@ Energia {self.tra.energia}
 
         elif opcao == 5:
             self.exibir_perfil()
-
+        #######################
         elif opcao == 6:       
             bdd.enviar_dados_para_banco_de_dados(self.personagem.nome, self.personagem.sobrenome,
                                               self.personagem.dinheiro, self.trabalho.trabalho[self.trabalho.num_trabalho_atual]['nome_trabalho'],

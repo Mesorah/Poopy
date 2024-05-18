@@ -7,7 +7,7 @@ class EscolhaTrabalho:
         self.num_trabalho_atual = 0
         self.trabalho = [
             {'id_trabalho': 1, 'nome_trabalho': 'Limpador de privada', 'salario': 1000, 'experiencia': 0},
-            {'id_trabalho': 2, 'nome_trabalho': 'Faxineiro', 'salario': 2500, 'experiencia': 0},
+            {'id_trabalho': 2, 'nome_trabalho': 'Faxineiro', 'salario': 2500, 'experiencia': 10},
 
         ]
     
