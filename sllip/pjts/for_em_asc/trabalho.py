@@ -7,6 +7,7 @@ class EscolhaTrabalho:
         self.num_trabalho_atual = 0
         self.trabalho = [
             {'id_trabalho': 1, 'nome_trabalho': 'Limpador de privada', 'salario': 1000, 'experiencia': 0},
+            {'id_trabalho': 2, 'nome_trabalho': 'Faxineiro', 'salario': 2500, 'experiencia': 0},
 
         ]
     
@@ -21,8 +22,10 @@ class EscolhaTrabalho:
     def escolher_trabalho(self, trabalhos):
         while True:
             escolha = input('Qual trabalho você irá escolher? ')
-            if self.verifica_numero(escolha) and int(escolha) in [1] and self.verifica_experiencia(trabalhos[int(escolha) - 1]['experiencia']):
-                self.num_trabalho_atual = trabalhos[int(escolha) - 1]
+            # print(trabalhos[int(escolha) - 1], '############$$$$$$$$$$$$$$$$$$@')
+            if self.verifica_numero(escolha) and int(escolha) in [1, 2] and self.verifica_experiencia(trabalhos[int(escolha) - 1]['experiencia']):
+                # self.num_trabalho_atual = trabalhos[int(escolha) - 1] ######
+                self.num_trabalho_atual = int(escolha) - 1 
                 print('ok')
                 break
 
@@ -107,8 +110,9 @@ class Trabalho:
 
             ###############################################
 
-            info_trabalhos = EscolhaTrabalho().trabalho
-            salario_trabalho_atual = info_trabalhos[EscolhaTrabalho().num_trabalho_atual]['salario']
+            info_trabalhos = self.escolha_trabalho.trabalho
+            salario_trabalho_atual = info_trabalhos[self.escolha_trabalho.num_trabalho_atual]['salario']
+            print(salario_trabalho_atual, '##############################################################')
 
             print(f'+ R${salario_trabalho_atual}')
 
@@ -125,6 +129,9 @@ class Trabalho:
 
 
     """ Emprego para substituar a mensagem no exemplo_trabalho """
-    def limpador_privado(self):
+    def limpador_privada(self):
         self.exemplo_trabalho('Limpando a privada...')
+
+    def faxineiro(self):
+        self.exemplo_trabalho('Limpando a parede...')
     

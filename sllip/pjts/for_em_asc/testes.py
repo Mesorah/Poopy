@@ -10,6 +10,8 @@ class IniciarJogo:
         self.tra = Trabalho(self.personagem, self.trabalho)
         self.loja = Loja(self.personagem, self.tra)
 
+
+    """ Loop para começar o jogo e chamadas de funções """
     def iniciar_jogo(self):
         self.personagem.nome_personagem()
         self.personagem.sobrenome_personagem()
@@ -25,6 +27,8 @@ class IniciarJogo:
             else:
                 self.escolha_opcoes(int(acao))
 
+
+    """ Printa no terminal as opções que o jogador tem """
     def exibe_opcoes(self):
         print('''
     1- Escolher o trabalho
@@ -32,26 +36,31 @@ class IniciarJogo:
     3- Dormir
     4- Loja
     5- Exibir perfil
+    6- Sair e salvar
     ''') 
-        
-    def exibir_perfil(self):
-        info_trabalhos = EscolhaTrabalho().trabalho
-            
+    
 
+    """ Exibe todo o perfil do jogador """
+    def exibir_perfil(self):
         print(f'''
 Nome: {self.personagem.nome}
 Sobrenome: {self.personagem.sobrenome}
 Dinheiro: {self.personagem.dinheiro}
-Trabalho atual: {info_trabalhos[EscolhaTrabalho().num_trabalho_atual]['nome_trabalho']}
+Trabalho atual: {self.trabalho.trabalho[self.trabalho.num_trabalho_atual]['nome_trabalho']}
 Experiencia: {self.trabalho.experiencia}
 Energia {self.tra.energia}
 ''')
+        
+
+    """ Função onde executa outras funções com base da escolha do jogador """
     def escolha_opcoes(self, opcao):
         if opcao == 1:
             self.trabalho.escolha_trabalho()
 
         elif opcao == 2:
-            self.tra.limpador_privado()
+            # self.tra.self.trabalho.trabalho[self.trabalho.num_trabalho_atual]['nome_trabalho']()
+            # print(self.trabalho.trabalho[self.trabalho.num_trabalho_atual]['nome_trabalho'])
+            self.tra.faxineiro()
 
         elif opcao == 3:
             self.tra.descancar()
@@ -62,43 +71,22 @@ Energia {self.tra.energia}
         elif opcao == 5:
             self.exibir_perfil()
 
-        elif opcao == 6:
-            # Pegue os atributos do personagem
-            TipoPerfis().enviar()
+        elif opcao == 6:       
+            bdd.enviar_dados_para_banco_de_dados(self.personagem.nome, self.personagem.sobrenome,
+                                              self.personagem.dinheiro, self.trabalho.trabalho[self.trabalho.num_trabalho_atual]['nome_trabalho'],
+                                                self.trabalho.experiencia, self.tra.energia)
+            
+            return
+            
         
         else:
             print('opção inexistente')
 
+    """ Verifica se é um numero """
     def verifica_numero(self, numero):
         return numero.isnumeric()
     
 
-
-class TipoPerfis(IniciarJogo):
-    def __init__(self):
-        super().__init__()
-        print(self.nome, self.sobrenome, self.dinheiro, self.trabalho_atual, self.experiencia, self.energia)
-
-
-        # self.personagem = Perfil()
-        # self.trabalho = EscolhaTrabalho()
-        # self.tra = Trabalho(self.personagem, self.trabalho)
-        # self.loja = Loja(self.personagem, self.tra)
-
-        # info_trabalhos = EscolhaTrabalho().trabalho
-
-        # self.nome = self.personagem.nome
-        # self.sobrenome = self.personagem.sobrenome
-        # self.dinheiro = self.personagem.dinheiro
-        # self.trabalho_atual = info_trabalhos[self.trabalho.num_trabalho_atual]['nome_trabalho']
-        # self.experiencia = self.trabalho.experiencia
-        # self.energia = self.tra.energia
-
-    # Envie os dados para o banco de dados
-    # def enviar(self):
-    #     print('fui enviado')
-    #     bdd.enviar_dados_para_banco_de_dados(self.nome, self.sobrenome, self.dinheiro, self.trabalho_atual, self.experiencia, self.energia)
-        #  print(self.nome, self.sobrenome, self.dinheiro, self.trabalho_atual, self.experiencia, self.energia)
 
 jogo = IniciarJogo()
 jogo.iniciar_jogo()
