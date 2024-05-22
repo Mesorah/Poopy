@@ -8,6 +8,7 @@ class EscreverPost:
         pass
 
 
+    """ Onde a pessoa irá escrever seu título da mensagem """
     def titulo(self):
         print('Escreva seu título')
 
@@ -16,6 +17,7 @@ class EscreverPost:
         return titulo_usuario
 
 
+    """ Onde a pessoa irá escrever sua mensagem """
     def msg_post(self):
         print('Escreva sua msg')
         
@@ -24,9 +26,10 @@ class EscreverPost:
         return mensagem_usuario
 
     
-    def juncao_msg(self, titulo, msg, _id):
+    """ Onde junta a msg com o título """
+    def juncao_msg(self, titulo, msg):
         mensagem_completa = f''' Título {titulo}
 
-id{_id}    Texto: {msg} '''
+Texto: {msg} '''
         
         return mensagem_completa

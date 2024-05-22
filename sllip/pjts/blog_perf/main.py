@@ -5,34 +5,53 @@
 
 from main import *
 from posts import *
-from guarda_msg import *
+from envia_mensagem_perfil import *
 from cadastro import Cadastro
+from ver_posts import VerPosts
 
 class MenuBlog:
     def __init__(self):
         pass
 
-
+    
+    """ Exibe as informações que o usuário pode fazer """
     def exibir_alternativas(self):
         print('''
 [1] ver posts
 [2] ver as pessoas''')
         
 
+    """ Pega a resposta do usuário """
     def alternativas(self):
-        resp = input('R: ') 
-        
+        self.exibir_alternativas()
         while True:
+            resp = input('R: ') 
+
             if Cadastro.verifica_numero(resp):
                 self.caminho_alternativas(int(resp))
-
+                break
             else:
-                pass
+                print("Entrada inválida. Tente novamente.")
 
     
+    """ Envia para um função depedendo das alternativas do usuário """
     def caminho_alternativas(self, opcao):
         if opcao == 1:
-            pass
+            vp = VerPosts()
+            vp.mostrar_post()
 
         elif opcao == 2:
             pass
+
+        else:
+            print('Opção inválida')
+
+
+    def iniciar_jogo(self):
+        pass
+
+if __name__ == "__main__":
+    mb = MenuBlog()
+    mb.alternativas()
+
+# mb.iniciar_jogo()
