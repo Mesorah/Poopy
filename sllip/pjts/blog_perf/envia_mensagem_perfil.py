@@ -1,8 +1,8 @@
-from bdd import enviar_dados_para_banco_de_dados_perfil, enviar_dados_para_banco_de_dados_msg
-
 """
     O arquivo guarda_msg.py serve para enviar mensagens ou o perfil para o banco de dados
 """
+
+from bdd import enviar_dados_para_banco_de_dados_perfil, enviar_dados_para_banco_de_dados_msg
 
 class EnviaPerfil:
     """ Pega o nome, sobrenome e senha e envia para o banco de dados Perfis """

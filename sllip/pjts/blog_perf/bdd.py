@@ -1,3 +1,5 @@
+""" O bdd.py serve para se conectar no banco de dados """
+
 import sqlite3
 from contextlib import closing
 from pathlib import Path
@@ -160,6 +162,15 @@ def pega_blog_unico(_id):
                 
                 else:
                     print('Texto não encontrado')
+
+
+def mostra_pessoas_bdd():
+    with sqlite3.connect(ARQUIVO_COMPLETO) as connection:
+            with closing(connection.cursor()) as cursor:
+                cursor.execute('SELECT nome, sobrenome FROM Perfis')
+                pessoas = cursor.fetchall()
+
+                return pessoas
 
 
 # enviar_dados_para_banco_de_dados_perfil('João', 'Silva', '2323')

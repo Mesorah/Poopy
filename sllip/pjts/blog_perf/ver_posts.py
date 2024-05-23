@@ -1,3 +1,5 @@
+""" O arquivo ver_posts.py serve para ver todos os posts que existem no banco de dados """
+
 from bdd import pega_informacoes_posts, pega_blog_unico
 from cadastro import *
 
@@ -18,9 +20,10 @@ class VerPosts:
 
             nome_completo = ' '.join(nome).replace(' ', '')
 
-            print(f'Id: {_id}, Título: {titulo}, Nome: {nome_completo} {sobrenome}')
+            print(f'Título: {titulo}, Nome: {nome_completo} {sobrenome} Id: {_id}')
 
     
+    """ Pega a resposta do usuário """
     def resposta_usuario(self):
         while True:
             resp = input('R: ')
@@ -33,10 +36,10 @@ class VerPosts:
                 print('Número incorreto')
 
 
+    """ Printa o blog que o usuario escolheu em resposta_usuario """
     def acessar_unico_blog(self, resp):
         resultado = pega_blog_unico(resp)
 
-        
         for blog in resultado:
             print(blog)
 
