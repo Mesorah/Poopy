@@ -123,7 +123,6 @@ class MenuBlog:
                 else:
                     sleep(1)
                     self.limpa_terminal()
-                    # print('perfil não encontrado')
 
             else:
 

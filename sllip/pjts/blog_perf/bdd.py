@@ -130,7 +130,6 @@ def pega_informacoes(nome, sobrenome, senha):
                 resultado = cursor.fetchone()
 
                 if resultado:
-                    print('aa')
                     print(resultado)
 
                     return True
@@ -177,6 +176,9 @@ def mostra_pessoas_bdd():
                 return pessoas
 
 
-# enviar_dados_para_banco_de_dados_perfil('João', 'Silva', '2323')
-# enviar_dados_para_banco_de_dados_msg('Olá', 'Esta é uma mensagem', 1) 
-# print(pega_id('João', 'Silva', '23231'))
+if __name__ == '__main__':
+    # enviar_dados_para_banco_de_dados_perfil('João', 'Silva', '2323')
+    # enviar_dados_para_banco_de_dados_msg('Olá', 'Esta é uma mensagem', 1) 
+    # print(pega_id('João', 'Silva', '23231'))
+
+    pass
