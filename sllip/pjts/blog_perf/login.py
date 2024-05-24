@@ -24,8 +24,12 @@ class Login:
             print('logou')
             self.carrega_perfil()
 
+            return True
+
         else:
             print('perfil não encontrado')
+            
+            return False
 
 
     """ Pega as informações como nome, sobrenome, senha do bdd.py """

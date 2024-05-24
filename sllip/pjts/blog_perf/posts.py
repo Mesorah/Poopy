@@ -9,7 +9,8 @@ class EscreverPost:
 
 
     """ Onde a pessoa irá escrever seu título da mensagem """
-    def titulo(self):
+    @staticmethod
+    def titulo():
         print('Escreva seu título')
 
         titulo_usuario = input('R: ')
@@ -18,7 +19,8 @@ class EscreverPost:
 
 
     """ Onde a pessoa irá escrever sua mensagem """
-    def msg_post(self):
+    @staticmethod
+    def msg_post():
         print('Escreva sua msg')
         
         mensagem_usuario = input('R: ')
@@ -27,7 +29,8 @@ class EscreverPost:
 
     
     """ Onde junta a msg com o título """
-    def juncao_msg(self, titulo, msg):
+    @staticmethod
+    def juncao_msg(titulo, msg):
         mensagem_completa = f''' Título {titulo}
 
 Texto: {msg} '''

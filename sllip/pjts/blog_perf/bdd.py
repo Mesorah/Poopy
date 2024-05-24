@@ -133,6 +133,10 @@ def pega_informacoes(nome, sobrenome, senha):
                     print('aa')
                     print(resultado)
 
+                    return True
+                
+                return False
+
     except TypeError as ErroTipo:
         print(f'Id não encontrado {ErroTipo}')
 

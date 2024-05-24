@@ -41,7 +41,8 @@ class VerPosts:
         resultado = pega_blog_unico(resp)
 
         for blog in resultado:
-            print(blog)
+            print(f'''Título: {blog[1]}
+Texto: {blog[2]}''')
 
 
 if __name__ == '__main__':

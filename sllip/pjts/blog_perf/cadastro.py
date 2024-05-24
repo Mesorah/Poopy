@@ -12,38 +12,43 @@ class Cadastro:
 
     
     """ Para cadastrar o nome do usuário """
-    def nome_usuario(self):
-        self.nome = input('Qual seu nome? ')
+    @classmethod
+    def nome_usuario(cls):
+        cls.nome = input('Qual seu nome? ')
 
         while True:
-            if self.verifica_letra(self.nome):
-                return self.nome
+            if cls.verifica_letra(cls.nome):
+                return cls.nome
 
             else:
                 pass
 
 
     """ Para cadastrar o sobrenome do usuário """
-    def sobrenome_usuario(self):
-        self.sobrenome = input('Qual seu sobrenome? ')
+    @classmethod
+    def sobrenome_usuario(cls):
+        cls.sobrenome = input('Qual seu sobrenome? ')
 
         while True:
-            if self.verifica_letra(self.sobrenome):
-                return self.sobrenome
+            if cls.verifica_letra(cls.sobrenome):
+                return cls.sobrenome
 
             else:
                 pass
 
 
     """ Para cadastrar a senha do usuário """
-    def senha_usuario(self):
-        self.senha = input('Crie uma senha: ')
+    @classmethod
+    def senha_usuario(cls):
+        cls.senha = input('Crie uma senha: ')
 
-        return self.senha
+        return cls.senha
 
 
     """ Verifica se a palavra é uma string """
-    def verifica_letra(self, palavra):
+
+    @staticmethod
+    def verifica_letra(palavra):
         for letra in palavra:
             if not letra.isalpha():
                 return False
