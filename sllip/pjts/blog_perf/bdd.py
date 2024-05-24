@@ -151,7 +151,11 @@ def pega_informacoes_posts():
             ''')
                 mensagens = cursor.fetchall()
 
+                if not mensagens:
+                    return False
+
                 return mensagens
+                
             
 """ Pega um blog pelo id """
 def pega_blog_unico(_id):
@@ -167,6 +171,7 @@ def pega_blog_unico(_id):
                     print('Texto não encontrado')
 
 
+""" Mostra todas as pessoas do banco de dados """
 def mostra_pessoas_bdd():
     with sqlite3.connect(ARQUIVO_COMPLETO) as connection:
             with closing(connection.cursor()) as cursor:
@@ -174,6 +179,19 @@ def mostra_pessoas_bdd():
                 pessoas = cursor.fetchall()
 
                 return pessoas
+            
+
+""" Verifica se o id da mensagem existe """
+def verifica_id_mensagem_bdd(_id):
+    with sqlite3.connect(ARQUIVO_COMPLETO) as connection:
+        with closing(connection.cursor()) as cursor:
+            cursor.execute('SELECT id FROM Mensagens WHERE id = ?', (_id,))
+            resultado = cursor.fetchone()
+            
+            if resultado:
+                return True  # ID existe na tabela
+
+            return False  # ID não existe na tabela
 
 
 if __name__ == '__main__':

@@ -67,7 +67,6 @@ class MenuBlog:
             self.limpa_terminal()
             vp = VerPosts()
             vp.mostrar_post()
-            vp.resposta_usuario()
 
 
         elif opcao == 2:
@@ -124,7 +123,7 @@ class MenuBlog:
                     sleep(1)
                     self.limpa_terminal()
 
-            else:
+            elif resp == 'n':
 
                 self.nome = Cadastro.nome_usuario()
                 self.sobrenome = Cadastro.sobrenome_usuario()
@@ -136,6 +135,9 @@ class MenuBlog:
                 sleep(1)
                 self.limpa_terminal()
                 self.continuando_jogo()
+
+            else:
+                print('opção inválida')
 
 
     """ Leva para as alternativas """

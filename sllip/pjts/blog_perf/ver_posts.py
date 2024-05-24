@@ -1,6 +1,6 @@
 """ O arquivo ver_posts.py serve para ver todos os posts que existem no banco de dados """
 
-from bdd import pega_informacoes_posts, pega_blog_unico
+from bdd import pega_informacoes_posts, pega_blog_unico, verifica_id_mensagem_bdd
 from cadastro import *
 
 
@@ -11,16 +11,23 @@ class VerPosts:
     
     """ Mostra os posts dos blogs, (apenas id, título e nome) """
     def mostrar_post(self):
-        valores = pega_informacoes_posts()
+        if pega_informacoes_posts():
 
-        print('Qual blog você quer acesasar?')
+            valores = pega_informacoes_posts()
 
-        for blogs in valores:
-            _id, titulo, nome, sobrenome = blogs
+            print('Qual blog você quer acesasar?')
 
-            nome_completo = ' '.join(nome).replace(' ', '')
+            for blogs in valores:
+                _id, titulo, nome, sobrenome = blogs
 
-            print(f'Título: {titulo}, Nome: {nome_completo} {sobrenome} Id: {_id}')
+                nome_completo = ' '.join(nome).replace(' ', '')
+
+                print(f'Título: {titulo}, Nome: {nome_completo} {sobrenome} Id: {_id}')
+
+            self.resposta_usuario()
+
+        else:
+            print('Nenhum blog encontrado')
 
     
     """ Pega a resposta do usuário """
@@ -28,7 +35,7 @@ class VerPosts:
         while True:
             resp = input('R: ')
 
-            if Cadastro.verifica_numero(resp):
+            if Cadastro.verifica_numero(resp) and verifica_id_mensagem_bdd(int(resp)):
 
                 return self.acessar_unico_blog(resp)
             
